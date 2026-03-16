@@ -9,7 +9,7 @@ export const adminItems = [
   { label: "ADMIN DASHBOARD", path: "/admin", icon: LayoutDashboard },
   { label: "SERVICES MANAGEMENT", path: "/services", icon: FileText },
   { label: "AUDIT LOGS", path: "/audit-logs", icon: ShieldCheck },
-  { label: "SYSTEM ANALYTICS", path: "/admin", icon: History },
+  { label: "SYSTEM ANALYTICS", path: "/analytics", icon: History },
 ];
 
 export const citizenItems = [
