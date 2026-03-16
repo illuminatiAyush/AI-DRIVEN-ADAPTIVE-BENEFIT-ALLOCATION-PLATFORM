@@ -2,7 +2,7 @@
 // API client for the GovTech backend (FastAPI running on port 8001)
 // ---------------------------------------------------------------------------
 
-export const API_BASE = "http://localhost:8001";
+export const API_BASE = "http://127.0.0.1:8001";
 
 // ──────────────────────────────────────────────
 // Types mirroring the backend ApplicationResponse

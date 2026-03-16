@@ -199,7 +199,7 @@ const AdminDashboard = () => {
             <div>
               <div className="flex items-center gap-3">
                 <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-                  <span className="material-symbols-outlined text-indigo-gov dark:text-indigo-400">admin_panel_settings</span>
+                  <ShieldCheck className="h-8 w-8 text-indigo-gov dark:text-indigo-400" />
                   District Administration
                 </h1>
                 <div className="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 rounded-full">
@@ -283,8 +283,8 @@ const AdminDashboard = () => {
                     <div>
                       <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase">Emergency Multiplier Center</h3>
                       <p className="text-sm text-slate-500 font-medium whitespace-nowrap overflow-hidden text-ellipsis">Global adaptive scoring for immediate disaster response.</p>
-                      <div className="mt-1 font-mono text-[10px] text-indigo-gov dark:text-indigo-400 font-bold bg-indigo-gov/5 px-2 py-0.5 rounded inline-block">
-                        Logic: {"$V_{final} = V_{base} × 1.5$"}
+                      <div className="mt-1 font-mono text-[9px] text-indigo-gov dark:text-indigo-400 font-bold bg-indigo-gov/5 px-2 py-0.5 rounded inline-flex items-center gap-1">
+                        Logic: <span>V<sub>final</sub> = V<sub>base</sub> × 1.5</span>
                       </div>
                     </div>
                   </div>
@@ -305,8 +305,8 @@ const AdminDashboard = () => {
                   </div>
                   
                   <div className="space-y-4">
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                      Activating Crisis Mode automatically applies a <strong>1.5x Multiplier</strong> to the Vulnerability Index of all incoming applications in this district. Useful for flash floods, health outbreaks, or economic shocks.
+                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                      Activating Crisis Mode applies a <strong>1.5x Multiplier</strong> (V<sub>final</sub> = V<sub>base</sub> × 1.5) to the Vulnerability Index of all applications in this district.
                     </p>
                     <div className="flex items-center gap-3">
                       <Button 
@@ -497,6 +497,9 @@ const AdminDashboard = () => {
                                   <span className={`text-sm font-black ${ (app.effective_score || 0) > 80 ? 'text-rose-600' : 'text-indigo-600'}`}>
                                     {Math.round(app.effective_score || 0)}
                                   </span>
+                                  {app.readiness_bonus && app.readiness_bonus > 0 ? (
+                                    <Badge className="bg-emerald-600 text-[8px] h-3 px-1 leading-none font-black text-white rounded-sm mt-0.5">✅ Ready for Disbursement</Badge>
+                                  ) : null}
                                   {(app.effective_score || 0) > 80 && (
                                     <Badge className="bg-rose-600 text-[8px] h-3 px-1 leading-none font-black text-white rounded-sm mt-0.5">HIGH PRIO</Badge>
                                   )}

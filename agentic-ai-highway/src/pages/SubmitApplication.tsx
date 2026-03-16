@@ -300,39 +300,25 @@ const SubmitApplication = () => {
                         />
                       </div>
                       <div>
-                        <Label className="text-slate-700 dark:text-slate-300 mb-2 block">
-                          Select Districts (Multi-Selection Enabled)
+                        <Label htmlFor="district" className="text-slate-700 dark:text-slate-300">
+                          Select District
                         </Label>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {["Mumbai", "Thane", "Pune", "Nagpur"].map((d) => {
-                            const isSelected = form.district.split(", ").includes(d);
-                            return (
-                              <Badge 
-                                key={d}
-                                variant={isSelected ? "default" : "outline"}
-                                className={`cursor-pointer px-3 py-1.5 text-[10px] font-black uppercase transition-all ${
-                                  isSelected 
-                                    ? "bg-indigo-600 text-white border-indigo-600 shadow-md scale-105" 
-                                    : "bg-white dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700 hover:border-indigo-400"
-                                }`}
-                                onClick={() => {
-                                  const currents = form.district ? form.district.split(", ") : [];
-                                  let next;
-                                  if (currents.includes(d)) {
-                                    next = currents.filter(c => c !== d).join(", ");
-                                  } else {
-                                    next = [...currents, d].join(", ");
-                                  }
-                                  update("district", next || "Mumbai");
-                                }}
-                              >
-                                {d}
-                                {isSelected && <CheckCircle className="ml-1.5 h-3 w-3" />}
-                              </Badge>
-                            );
-                          })}
-                        </div>
-                        <p className="text-[10px] text-slate-400 italic font-medium uppercase tracking-tighter">Tip: Select all districts that apply to your current residence or business impact area.</p>
+                        <Select
+                          value={form.district}
+                          onValueChange={(v) => update("district", v)}
+                        >
+                          <SelectTrigger 
+                            id="district" 
+                            className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 focus:ring-indigo-gov text-slate-900 dark:text-white mt-1.5"
+                          >
+                            <SelectValue placeholder="Select your district" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white">
+                            {["Mumbai", "Thane", "Pune", "Nagpur"].map((d) => (
+                              <SelectItem key={d} value={d}>{d}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                       </div>
                     </div>
                   )}
