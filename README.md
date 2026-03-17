@@ -83,10 +83,6 @@ Judges should follow this flow to verify the system's core capabilities:
 - **Verification**: Check the **Audit Logs** in the Admin panel.
 - **Logic**: The AI detect pattern duplicates and assigns a **Fraud Score**. High-risk applications are automatically "Flagged for Audit" instead of being approved.
 
-### 4. AI Support Multi-Turn Chatbot
-- **Action**: Go to the Citizen Dashboard and use the Chatbot.
-- **Verification**: Ask about your application status (e.g., *"What is the status of my application GT-XXXX?"*).
-- **Logic**: The bot fetches real-time data from the SQL database and provides context-aware support using **Llama 3.3 (via Groq)**.
 
 ---
 
